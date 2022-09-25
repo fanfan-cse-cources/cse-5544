@@ -1,0 +1,11 @@
+path {
+    stroke: white;
+}
+
+text {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    fill: white;
+    text-anchor: middle;
+}

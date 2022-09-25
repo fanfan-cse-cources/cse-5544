@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yifan Yao - Lab 1-P1</title>
+    <!-- <script type="text/javascript" src="d3/d3.min.js"></script>  -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+<svg height="1000" width="2000">
+    <g transform="translate(0, 200)">
+        <text x="50" y="0">London</text>
+        <line stroke="orange" stroke-width="15" x1="130" x2="433.59" y1="-5" y2="-5"/>
+        <text x="50" y="30">New York</text>
+        <line stroke="orange" stroke-width="15" x1="130" x2="424.21" y1="25" y2="25"/>
+        <text x="50" y="60">Sydney</text>
+        <line stroke="orange" stroke-width="15" x1="130" x2="280.255" y1="55" y2="55"/>
+        <text x="50" y="90">Paris</text>
+        <line stroke="orange" stroke-width="15" x1="130" x2="208.54" y1="85" y2="85"/>
+        <text x="50" y="120">Beijing</text>
+        <line stroke="orange" stroke-width="15" x1="130" x2="532.85" y1="115" y2="115"/>
+        <line stroke="black" stroke-width="1" x1="130" x2="550" y1="122.5" y2="122.5"/>
+        <line stroke="black" stroke-width="1" x1="130" x2="130" y1="122.5" y2="127.5"/>
+        <text font-size="0.75em" x="127.5" y="140">0</text>
+        <line stroke="black" stroke-width="1" x1="200" x2="200" y1="122.5" y2="127.5"/>
+        <text font-size="0.75em" x="182.5" y="140">2,000,000</text>
+        <line stroke="black" stroke-width="1" x1="270" x2="270" y1="122.5" y2="127.5"/>
+        <text font-size="0.75em" x="252.5" y="140">4,000,000</text>
+        <line stroke="black" stroke-width="1" x1="340" x2="340" y1="122.5" y2="127.5"/>
+        <text font-size="0.75em" x="322.5" y="140">6,000,000</text>
+        <line stroke="black" stroke-width="1" x1="410" x2="410" y1="122.5" y2="127.5"/>
+        <text font-size="0.75em" x="392.5" y="140">8,000,000</text>
+        <line stroke="black" stroke-width="1" x1="480" x2="480" y1="122.5" y2="127.5"/>
+        <text font-size="0.75em" x="462.5" y="140">10,000,000</text>
+        <line stroke="black" stroke-width="1" x1="550" x2="550" y1="122.5" y2="127.5"/>
+        <text font-size="0.75em" x="532.5" y="140">12,000,000</text>
+    </g>
+    <g transform="translate(500, 400)">
+        <text font-size="0.75em" transform="translate(145, -300) rotate(270)">Price ($)</text>
+        <line stroke="black" stroke-width="1" x1="130" x2="130" y1="0" y2="5"/>
+        <text font-size="0.75em" x="115" y="20">Mon 23</text>
+        <line stroke="black" stroke-width="1" x1="205" x2="205" y1="0" y2="5"/>
+        <text font-size="0.75em" x="190" y="20">Tue 24</text>
+        <line stroke="black" stroke-width="1" x1="280" x2="280" y1="0" y2="5"/>
+        <text font-size="0.75em" x="265" y="20">Wed 25</text>
+        <line stroke="black" stroke-width="1" x1="355" x2="355" y1="0" y2="5"/>
+        <text font-size="0.75em" x="340" y="20">Thu 26</text>
+        <line stroke="black" stroke-width="1" x1="430" x2="430" y1="0" y2="5"/>
+        <text font-size="0.75em" x="415" y="20">Fri 27</text>
+        <line stroke="black" stroke-width="1" x1="505" x2="505" y1="0" y2="5"/>
+        <text font-size="0.75em" x="490" y="20">Sat 28</text>
+        <line stroke="black" stroke-width="1" x1="130" x2="550" y1="0" y2="0"/>
+        <line stroke="black" stroke-width="1" x1="130" x2="130" y1="0" y2="-350"/>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="0" y2="0"/>
+        <text font-size="0.75em" x="100" y="-30">565</text>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="-35" y2="-35"/>
+        <text font-size="0.75em" x="100" y="-65">570</text>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="-70" y2="-70"/>
+        <text font-size="0.75em" x="100" y="-100">575</text>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="-105" y2="-105"/>
+        <text font-size="0.75em" x="100" y="-135">580</text>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="-140" y2="-140"/>
+        <text font-size="0.75em" x="100" y="-170">585</text>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="-175" y2="-175"/>
+        <text font-size="0.75em" x="100" y="-205">590</text>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="-210" y2="-210"/>
+        <text font-size="0.75em" x="100" y="-240">595</text>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="-245" y2="-245"/>
+        <text font-size="0.75em" x="100" y="-275">600</text>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="-280" y2="-280"/>
+        <text font-size="0.75em" x="100" y="-310">605</text>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="-315" y2="-315"/>
+        <text font-size="0.75em" x="100" y="-345">610</text>
+        <line stroke="black" stroke-width="1" x1="125" x2="130" y1="-350" y2="-350"/>
+        <line stroke="black" stroke-width="1" x1="130" x2="205" y1="-81.9" y2="-1.96"/>
+        <line stroke="black" stroke-width="1" x1="205" x2="280" y1="-1.96" y2="-350.0"/>
+        <line stroke="black" stroke-width="1" x1="280" x2="355" y1="-350.0" y2="-333.9"/>
+        <line stroke="black" stroke-width="1" x1="355" x2="430" y1="-333.9" y2="-301.0"/>
+        <line stroke="black" stroke-width="1" x1="430" x2="505" y1="-301.0" y2="-160.86"/>
+    </g>
+
+    <g transform="translate(0, 800)">
+        <line stroke="black" stroke-width="1" x1="130" x2="508" y1="0" y2="0"/>
+        <line stroke="black" stroke-width="1" x1="130" x2="130" y1="0" y2="5"/>
+        <line stroke="black" stroke-width="1" x1="172.0" x2="172.0" y1="0" y2="5"/>
+        <line stroke="black" stroke-width="1" x1="214.0" x2="214.0" y1="0" y2="5"/>
+        <line stroke="black" stroke-width="1" x1="256.0" x2="256.0" y1="0" y2="5"/>
+        <line stroke="black" stroke-width="1" x1="298.0" x2="298.0" y1="0" y2="5"/>
+        <line stroke="black" stroke-width="1" x1="340.0" x2="340.0" y1="0" y2="5"/>
+        <line stroke="black" stroke-width="1" x1="382.0" x2="382.0" y1="0" y2="5"/>
+        <line stroke="black" stroke-width="1" x1="424.0" x2="424.0" y1="0" y2="5"/>
+        <line stroke="black" stroke-width="1" x1="466.0" x2="466.0" y1="0" y2="5"/>
+        <line stroke="black" stroke-width="1" x1="508.0" x2="508.0" y1="0" y2="5"/>
+        <!-- <line x1="550.0" x2="550.0" y1="0" y2="5" stroke="black" stroke-width="1" /> -->
+
+        <text font-size="0.75em" x="167.0" y="15">-4</text>
+        <text font-size="0.75em" x="209.0" y="15">-3</text>
+        <text font-size="0.75em" x="251.0" y="15">-2</text>
+        <text font-size="0.75em" x="293.0" y="15">1</text>
+        <text font-size="0.75em" x="335.0" y="15">0</text>
+        <text font-size="0.75em" x="377.0" y="15">1</text>
+        <text font-size="0.75em" x="419.0" y="15">2</text>
+        <text font-size="0.75em" x="461.0" y="15">3</text>
+
+        <rect height="9" style="fill:lightblue;" width="42" x="172.0" y="-9"/>
+        <rect height="68.5" style="fill:lightblue;" width="42" x="214.0" y="-68.5"/>
+        <rect height="171.5" style="fill:lightblue;" width="42" x="256.0" y="-171.5"/>
+        <rect height="172.5" style="fill:lightblue;" width="42" x="298.0" y="-172.5"/>
+        <rect height="71" style="fill:lightblue;" width="42" x="340.0" y="-71"/>
+
+        <text font-size="0.5em" x="188.0" y="-2">18</text>
+        <text font-size="0.5em" x="230.0" y="-61.5">137</text>
+        <text font-size="0.5em" x="272.0" y="-162">343</text>
+        <text font-size="0.5em" x="314.0" y="-162.5">345</text>
+        <text font-size="0.5em" x="356.0" y="-64">142</text>
+
+        <g transform="translate(700, -250)">
+            <path d="M140, 0 A140,140 0 0 1 244,46 L169,113 A40,40 0 0 0 140,100 Z" fill="#cccccc" id="0"></path>
+            <path d="M244, 46 A140,140 0 0 1 222,253 L163,172 A40,40 0 0 0 169,113 Z" fill="yellow" id="1"></path>
+            <path d="M222, 253 A140,140 0 0 1 0,154 L100,144 A40,40 0 0 0 163,172 Z" fill="lightpink" id="2"></path>
+            <path d="M0, 154 A140,140 0 0 1 6,96 L101,127 A40,40 0 0 0 100,144 Z" fill="lightblue" id="3"></path>
+            <path d="M6, 96 A140,140 0 0 1 139,0 L139,100 A40,40 0 0 0 101,127 Z" fill="orange" id="4"></path>
+
+            <text font-size="1em" x="155.0" y="55">Apples</text>
+            <text font-size="1em" x="45.0" y="65">Elderberries</text>
+            <text font-size="1em" x="200.0" y="150">Bananas</text>
+            <text font-size="1em" x="30.0" y="135">Damsons</text>
+            <text font-size="1em" x="85.0" y="225">Cherries</text>
+        </g>
+</svg>
+
+</body>
+</html>
