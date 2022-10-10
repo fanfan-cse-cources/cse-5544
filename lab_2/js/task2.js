@@ -1,3 +1,6 @@
+let years = []
+const maxNumber = 150000000;
+
 d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
     let svg = d3.select("svg"),
         margin = {top: 10, right: 30, bottom: 30, left: 30},
@@ -5,7 +8,6 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
         height = +svg.attr("height") - margin.top - margin.bottom
 
     const array = Object.values(data);
-    let years = []
 
     let current_pos = -1
     let current_year = 0
@@ -29,8 +31,6 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
             data_points[current_pos][source] = generation
         }
     }
-
-    const maxNumber = 150000000;
 
     let y = d3.scaleLinear()
         .domain([0, maxNumber])
@@ -67,11 +67,11 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
 
     let stackedData = stack(data_points);
 
-    let subgroups = ["Coal", "Nuclear", "Natural Gas"]
+    const subgroups = ["Coal", "Nuclear", "Natural Gas"]
 
     let color = d3.scaleOrdinal()
         .domain(subgroups)
-        .range(['#322F20', '#988F2A', '#FE5F00'])
+        .range(['#322F20', '#988F2A', '#FE5F00', 'steelblue'])
 
     svg.append("g")
         .selectAll("g")
@@ -112,7 +112,7 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
         .attr("transform", "translate(400, -80)")
 
     svg.selectAll("svg")
-        .data(subgroups)
+        .data(["Coal", "Nuclear", "Natural Gas", "Total Generation"])
         .enter()
         .append("text")
         .attr("x", 120)
@@ -128,4 +128,46 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
         .attr("transform", "translate(400, -80)")
+
+    let points = []
+
+    for (let i = 0; i < years.length; i++) {
+        let obj = {"YEAR": years[i], "GENERATION (Megawatthours)": 0}
+
+        for (let j = 0; j < data.length; j++) {
+            if (data[j]['YEAR'] === years[i]) {
+                obj["GENERATION (Megawatthours)"] += Number(data[j]["GENERATION (Megawatthours)"])
+            }
+        }
+
+        points[i] = obj
+    }
+
+    const parseTime = d3.timeParse("%Y");
+    let x1 = d3.scaleTime()
+        .domain(d3.extent(years, function (d) {
+            return parseTime(d);
+        }))
+        .rangeRound([65, width - 265]);
+
+    let y1 = d3.scaleLinear()
+        .domain([0, maxNumber])
+        .range([height, 0]);
+
+    let lineGenerator = d3.line()
+        .x(function (d) {
+            return x1(parseTime(d['YEAR']));
+        })
+        .y(function (d) {
+            return y1(d['GENERATION (Megawatthours)']);
+        });
+
+    svg.append("path")
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 2)
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-linecap", "round")
+        .attr("d", lineGenerator(points))
+        .attr("transform", "translate(75, 0)");
 });
