@@ -17,23 +17,23 @@ d3.csv("./output/energy/type_producer_generation.csv", function (data) {
         percentage[data[i]["TYPE OF PRODUCER"]] = Math.round(Number(data[i]["GENERATION (Megawatthours)"]) / total * 100 * 100) / 100
     }
 
+    const colors = ['#e0e0e2ff', '#81d2c7ff', '#b5bad0ff', '#7389aeff', '#416788ff']
     let color = d3.scaleOrdinal()
         .domain(subgroups)
-        .range(['#e0e0e2ff', '#81d2c7ff', '#b5bad0ff', '#7389aeff', '#416788ff'])
-    const colors = ['#e0e0e2ff', '#81d2c7ff', '#b5bad0ff', '#7389aeff', '#416788ff'];
+        .range(colors)
 
     let pieGenerator = d3.pie()
         .value(function (d) {
-            return d["GENERATION (Megawatthours)"];
+            return d["GENERATION (Megawatthours)"]
         })
         .sort(function (a, b) {
-            return a["TYPE OF PRODUCER"].localeCompare(b["TYPE OF PRODUCER"]);
-        });
-    let arcData = pieGenerator(data);
+            return a["TYPE OF PRODUCER"].localeCompare(b["TYPE OF PRODUCER"])
+        })
+    let arcData = pieGenerator(data)
 
     let arcGenerator = d3.arc()
         .innerRadius(50)
-        .outerRadius(200);
+        .outerRadius(200)
 
     d3.select('g')
         .selectAll('path')
@@ -42,8 +42,8 @@ d3.csv("./output/energy/type_producer_generation.csv", function (data) {
         .append('path')
         .attr('d', arcGenerator)
         .attr('fill', function (d, i) {
-            return colors[i];
-        });
+            return colors[i]
+        })
 
     svg.selectAll("svg")
         .data(subgroups)
@@ -77,4 +77,4 @@ d3.csv("./output/energy/type_producer_generation.csv", function (data) {
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
         .attr("transform", "translate(0, 400)")
-});
+})

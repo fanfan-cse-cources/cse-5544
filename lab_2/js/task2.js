@@ -1,5 +1,5 @@
 let years = []
-const maxNumber = 150000000;
+const maxNumber = 150000000
 
 d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
     let svg = d3.select("svg"),
@@ -7,7 +7,7 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom
 
-    const array = Object.values(data);
+    const array = Object.values(data)
 
     let current_pos = -1
     let current_year = 0
@@ -34,16 +34,16 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
 
     let y = d3.scaleLinear()
         .domain([0, maxNumber])
-        .range([height, 0]);
+        .range([height, 0])
 
     let x = d3.scaleBand()
         .domain(years)
         .range([0, width - 200])
         .paddingOuter(0.33)
-        .paddingInner(0.33);
+        .paddingInner(0.33)
 
-    let yAxis = d3.axisLeft(y).ticks(3);
-    let xAxis = d3.axisBottom(x);
+    let yAxis = d3.axisLeft(y).ticks(3)
+    let xAxis = d3.axisBottom(x)
 
     svg.append('g')
         .attr("transform", "translate(75, 20)")
@@ -54,45 +54,44 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
         .attr("dx", "8em")
         .attr("dy", "-1.5em")
         .attr("text-anchor", "end")
-        .text("GENERATION (Megawatthours)");
+        .text("GENERATION (Megawatthours)")
 
     svg.append('g')
         .attr("transform", "translate(75, " + (height + 20) + ")")
-        .call(xAxis);
+        .call(xAxis)
 
     let stack = d3.stack()
         .keys(["Coal", "Nuclear", "Natural Gas"])
         .order(d3.stackOrderNone)
-        .offset(d3.stackOffsetNone);
+        .offset(d3.stackOffsetNone)
 
-    let stackedData = stack(data_points);
-
+    let stackedData = stack(data_points)
     const subgroups = ["Coal", "Nuclear", "Natural Gas"]
-
+    const colors = ['#322F20', '#988F2A', '#FE5F00', 'steelblue']
     let color = d3.scaleOrdinal()
         .domain(subgroups)
-        .range(['#322F20', '#988F2A', '#FE5F00', 'steelblue'])
+        .range(colors)
 
     svg.append("g")
         .selectAll("g")
         .data(stackedData)
         .enter().append("g")
         .attr("fill", function (d) {
-            return color(d.key);
+            return color(d.key)
         })
         .selectAll("rect")
         .data(function (d) {
-            return d;
+            return d
         })
         .enter().append("rect")
         .attr("x", function (d) {
-            return x(d['data']['year']);
+            return x(d['data']['year'])
         })
         .attr("y", function (d) {
-            return y(d[1]);
+            return y(d[1])
         })
         .attr("height", function (d) {
-            return y(d[0]) - y(d[1]);
+            return y(d[0]) - y(d[1])
         })
         .attr("width", x.bandwidth())
         .attr("transform", "translate(75, 20)")
@@ -143,24 +142,24 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
         points[i] = obj
     }
 
-    const parseTime = d3.timeParse("%Y");
+    const parseTime = d3.timeParse("%Y")
     let x1 = d3.scaleTime()
         .domain(d3.extent(years, function (d) {
-            return parseTime(d);
+            return parseTime(d)
         }))
-        .rangeRound([65, width - 265]);
+        .rangeRound([65, width - 265])
 
     let y1 = d3.scaleLinear()
         .domain([0, maxNumber])
-        .range([height, 0]);
+        .range([height, 0])
 
     let lineGenerator = d3.line()
         .x(function (d) {
-            return x1(parseTime(d['YEAR']));
+            return x1(parseTime(d['YEAR']))
         })
         .y(function (d) {
-            return y1(d['GENERATION (Megawatthours)']);
-        });
+            return y1(d['GENERATION (Megawatthours)'])
+        })
 
     svg.append("path")
         .attr("fill", "none")
@@ -169,5 +168,5 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr("d", lineGenerator(points))
-        .attr("transform", "translate(75, 0)");
-});
+        .attr("transform", "translate(75, 0)")
+})

@@ -19,7 +19,6 @@ d3.csv("./output/stock/moving_avg.csv", function (data) {
     let yAxis = d3.axisLeft(y).ticks(12)
     let xAxis = d3.axisBottom(x).ticks(d3.timeMonth, 1).tickFormat(d3.timeFormat('%B'))
 
-
     const subgroups = data.columns.slice(1,)
 
     let dataReady = subgroups.map(function (grpName) { // .map allows to do something for each element of the list
@@ -28,12 +27,12 @@ d3.csv("./output/stock/moving_avg.csv", function (data) {
             values: data.map(function (d) {
                 return {time: d["Date"], value: +d[grpName]}
             })
-        };
-    });
+        }
+    })
 
     svg.append('g')
         .attr("transform", "translate(75, " + height + ")")
-        .call(xAxis);
+        .call(xAxis)
 
     svg.append('g')
         .attr("transform", "translate(75, 100)")
