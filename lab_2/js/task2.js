@@ -129,44 +129,54 @@ d3.csv("./output/energy/top3_year_energy_oh.csv", function (data) {
         .attr("transform", "translate(400, -80)")
 
     let points = []
-
-    for (let i = 0; i < years.length; i++) {
-        let obj = {"YEAR": years[i], "GENERATION (Megawatthours)": 0}
-
-        for (let j = 0; j < data.length; j++) {
-            if (data[j]['YEAR'] === years[i]) {
-                obj["GENERATION (Megawatthours)"] += Number(data[j]["GENERATION (Megawatthours)"])
+    d3.csv("./output/energy/energy_oh_year.csv", function (data1) {
+        for (let i = 0; i < data1.length; i++) {
+            let obj = {
+                "YEAR": data1[i]["YEAR"],
+                "GENERATION (Megawatthours)": Number(data1[i]["GENERATION (Megawatthours)"])
             }
+            points[i] = obj
         }
 
-        points[i] = obj
-    }
+        const parseTime = d3.timeParse("%Y")
+        let x1 = d3.scaleTime()
+            .domain(d3.extent(years, function (d) {
+                return parseTime(d)
+            }))
+            .rangeRound([65, width - 265])
 
-    const parseTime = d3.timeParse("%Y")
-    let x1 = d3.scaleTime()
-        .domain(d3.extent(years, function (d) {
-            return parseTime(d)
-        }))
-        .rangeRound([65, width - 265])
+        let y1 = d3.scaleLinear()
+            .domain([0, maxNumber])
+            .range([height, 0])
 
-    let y1 = d3.scaleLinear()
-        .domain([0, maxNumber])
-        .range([height, 0])
+        let lineGenerator = d3.line()
+            .x(function (d) {
+                return x1(parseTime(d['YEAR']))
+            })
+            .y(function (d) {
+                return y1(d['GENERATION (Megawatthours)'])
+            })
 
-    let lineGenerator = d3.line()
-        .x(function (d) {
-            return x1(parseTime(d['YEAR']))
-        })
-        .y(function (d) {
-            return y1(d['GENERATION (Megawatthours)'])
-        })
+        svg.append("path")
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 2)
+            .attr("stroke-linejoin", "round")
+            .attr("stroke-linecap", "round")
+            .attr("d", lineGenerator(points))
+            .attr("transform", "translate(75, 0)")
 
-    svg.append("path")
-        .attr("fill", "none")
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 2)
-        .attr("stroke-linejoin", "round")
-        .attr("stroke-linecap", "round")
-        .attr("d", lineGenerator(points))
-        .attr("transform", "translate(75, 0)")
+        svg.selectAll('svg')
+            .data(["GENERATION (Megawatthours)"])
+            .enter()
+            .append("line")
+            .attr("x1",0)
+            .attr("y1",0)
+            .attr("x2",15)
+            .attr("y2",0)
+            .attr("stroke-width", 2)
+            .style("stroke", "steelblue")
+            .attr("transform", "translate(492.5, 93.75)");
+
+    })
 })
