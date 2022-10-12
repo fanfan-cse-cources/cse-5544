@@ -82,7 +82,7 @@ d3.csv("./output/stock/moving_avg.csv", function (data) {
         .style("fill", function (d) {
             return color(d)
         })
-        .attr("transform", "translate(400, 100)")
+        .attr("transform", "translate(500, 100)")
 
     svg.selectAll("svg")
         .data(subgroups)
@@ -96,9 +96,9 @@ d3.csv("./output/stock/moving_avg.csv", function (data) {
             return color(d)
         })
         .text(function (d) {
-            return d
+            return d.replace("_moving_avg", "")
         })
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
-        .attr("transform", "translate(400, 100)")
+        .attr("transform", "translate(500, 100)")
 })

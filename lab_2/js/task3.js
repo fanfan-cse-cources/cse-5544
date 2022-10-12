@@ -71,7 +71,6 @@ d3.csv("./output/energy/type_producer_generation.csv", function (data) {
             return color(d)
         })
         .text(function (d) {
-            console.log(d)
             return d + " " + percentage[d] + "%"
         })
         .attr("text-anchor", "left")
