@@ -1,0 +1,229 @@
+{
+  "name": "US",
+  "children": [
+    {
+      "name": "West",
+      "children": [
+        {
+          "name": "AK",
+          "value": 5943530.0
+        },
+        {
+          "name": "AZ",
+          "value": 108608535.0
+        },
+        {
+          "name": "CA",
+          "value": 196727116.0
+        },
+        {
+          "name": "CO",
+          "value": 56737727.0
+        },
+        {
+          "name": "HI",
+          "value": 9188089.0
+        },
+        {
+          "name": "ID",
+          "value": 16948581.0
+        },
+        {
+          "name": "MT",
+          "value": 24466637.0
+        },
+        {
+          "name": "NM",
+          "value": 35271296.0
+        },
+        {
+          "name": "NV",
+          "value": 41880191.0
+        },
+        {
+          "name": "OR",
+          "value": 61081837.0
+        },
+        {
+          "name": "UT",
+          "value": 42656775.0
+        },
+        {
+          "name": "WA",
+          "value": 109122726.0
+        },
+        {
+          "name": "WY",
+          "value": 43650676.0
+        }
+      ]
+    },
+    {
+      "name": "Midwest",
+      "children": [
+        {
+          "name": "IA",
+          "value": 66120266.0
+        },
+        {
+          "name": "IL",
+          "value": 181859377.0
+        },
+        {
+          "name": "IN",
+          "value": 94565161.0
+        },
+        {
+          "name": "KS",
+          "value": 56745956.0
+        },
+        {
+          "name": "MI",
+          "value": 116045383.0
+        },
+        {
+          "name": "MN",
+          "value": 59628025.0
+        },
+        {
+          "name": "MO",
+          "value": 77815983.0
+        },
+        {
+          "name": "ND",
+          "value": 42705232.0
+        },
+        {
+          "name": "NE",
+          "value": 38644643.0
+        },
+        {
+          "name": "OH",
+          "value": 123335613.0
+        },
+        {
+          "name": "SD",
+          "value": 17834631.0
+        },
+        {
+          "name": "WI",
+          "value": 65478679.0
+        }
+      ]
+    },
+    {
+      "name": "South",
+      "children": [
+        {
+          "name": "AL",
+          "value": 142955133.0
+        },
+        {
+          "name": "AR",
+          "value": 60230137.0
+        },
+        {
+          "name": "DC",
+          "value": 218241.0
+        },
+        {
+          "name": "DE",
+          "value": 4039976.0
+        },
+        {
+          "name": "FL",
+          "value": 244401038.0
+        },
+        {
+          "name": "GA",
+          "value": 126530745.0
+        },
+        {
+          "name": "KY",
+          "value": 70554259.0
+        },
+        {
+          "name": "LA",
+          "value": 98061967.0
+        },
+        {
+          "name": "MD",
+          "value": 39719296.0
+        },
+        {
+          "name": "MS",
+          "value": 68713324.0
+        },
+        {
+          "name": "NC",
+          "value": 131262686.0
+        },
+        {
+          "name": "OK",
+          "value": 80564122.0
+        },
+        {
+          "name": "SC",
+          "value": 99924409.0
+        },
+        {
+          "name": "TN",
+          "value": 81478887.0
+        },
+        {
+          "name": "TX",
+          "value": 483561769.0
+        },
+        {
+          "name": "VA",
+          "value": 94309019.0
+        },
+        {
+          "name": "WV",
+          "value": 65630564.0
+        }
+      ]
+    },
+    {
+      "name": "Northeast",
+      "children": [
+        {
+          "name": "CT",
+          "value": 44123575.0
+        },
+        {
+          "name": "MA",
+          "value": 19366993.0
+        },
+        {
+          "name": "ME",
+          "value": 10952775.0
+        },
+        {
+          "name": "NH",
+          "value": 17434999.0
+        },
+        {
+          "name": "NJ",
+          "value": 61386527.0
+        },
+        {
+          "name": "NY",
+          "value": 125226026.0
+        },
+        {
+          "name": "PA",
+          "value": 241648365.0
+        },
+        {
+          "name": "RI",
+          "value": 8035017.0
+        },
+        {
+          "name": "VT",
+          "value": 2147738.0
+        }
+      ]
+    }
+  ]
+}
