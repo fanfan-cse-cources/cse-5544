@@ -1,13 +1,13 @@
 d3.csv("./output/energy_2021_selected_states.csv", function (month_data) {
     const margin = {top: 20, right: 50, bottom: 20, left: 50},
         width = 600 - margin.left - margin.right,
-        height = 350 - margin.top - margin.bottom;
+        height = 350 - margin.top - margin.bottom - 100;
 
     const svg = d3.select("#state_heat").append("svg")
-        .attr("width", width + margin.left + margin.right + 50)
+        .attr("width", 650)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + 15 + "," + margin.top + ")");
 
     const month = [...Array(12).keys()].map(i => i + 1);
     const states_set = new Set()
@@ -21,11 +21,15 @@ d3.csv("./output/energy_2021_selected_states.csv", function (month_data) {
 
     const x_scale = d3.scaleBand().domain(month).range([10, width]).paddingOuter(0).paddingInner(0);
     const x_axis = d3.axisBottom().scale(x_scale).tickSize(0);
-    svg.append('g').attr('transform', 'translate(' + [0, height] + ')').call(x_axis);
+    svg.append('g').attr('transform', 'translate(' + [0, height] + ')')
+        .call(x_axis)
+        .call(g => g.select(".domain").remove());
 
     const y_scale = d3.scaleBand().domain(states).range([10, height]).paddingOuter(0).paddingInner(0);
     const y_axis = d3.axisLeft().scale(y_scale).tickSize(0);
-    svg.append('g').attr('transform', 'translate(' + [10, 0] + ')').call(y_axis);
+    svg.append('g').attr('transform', 'translate(' + [10, 0] + ')')
+        .call(y_axis)
+        .call(g => g.select(".domain").remove());
 
     const color_scale = d3.scaleSequential().domain([max, min]).interpolator(d3.interpolateRdBu);
 
@@ -61,8 +65,10 @@ d3.csv("./output/energy_2021_selected_states.csv", function (month_data) {
         .attr("y", function (d) {
             return y_scale(d['STATE']);
         })
-        .attr("width", width / month.length)
-        .attr("height", height / states.length)
+        .attr("rx", 4)
+        .attr("ry", 4)
+        .attr("width", width / month.length - 4)
+        .attr("height", height / states.length - 4)
         .style('fill', function (d) {
             return color_scale(d['GENERATION (Megawatthours)']);
         })

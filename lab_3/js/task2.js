@@ -4,10 +4,10 @@ d3.csv("./output/energy_2021_census.csv", function (data) {
         height = 350 - margin.top - margin.bottom;
 
     const svg = d3.select("#us_map").append("svg")
-        .attr("width", width + margin.left + margin.right + 50)
+        .attr("width", 650)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + 0 + "," + margin.top + ")");
 
     d3.json("./dataset/us-states.json", function (error, states) {
         const proj = d3.geoAlbersUsa()
