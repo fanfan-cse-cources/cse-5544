@@ -1,4 +1,4 @@
-d3.csv("./output/energy_2021_selected_states.csv", function (month_data) {
+d3.csv("./output/energy_2021_selected_states.csv", function (data) {
     const margin = {top: 20, right: 50, bottom: 20, left: 50},
         width = 600 - margin.left - margin.right,
         height = 350 - margin.top - margin.bottom - 100;
@@ -11,8 +11,8 @@ d3.csv("./output/energy_2021_selected_states.csv", function (month_data) {
 
     const month = [...Array(12).keys()].map(i => i + 1);
     const states_set = new Set()
-    for (let i = 0; i < month_data.length; i++) {
-        states_set.add(month_data[i]['STATE']);
+    for (let i = 0; i < data.length; i++) {
+        states_set.add(data[i]['STATE']);
     }
     const states = [...states_set].reverse();
 
@@ -57,7 +57,7 @@ d3.csv("./output/energy_2021_selected_states.csv", function (month_data) {
     }
 
     svg.selectAll("rect")
-        .data(month_data)
+        .data(data)
         .enter().append("rect")
         .attr("x", function (d) {
             return x_scale(parseInt(d['MONTH']));
