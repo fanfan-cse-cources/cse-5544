@@ -82,7 +82,7 @@ d3.csv("./output/energy_2021_selected_states.csv", function (data) {
         .style("fill", "url(#gradient_2)");
 
     svg.append("text")
-        .attr("x", ((width + 15) / 2))
+        .attr("x", (width + 15) / 2)
         .attr("y", 0)
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
