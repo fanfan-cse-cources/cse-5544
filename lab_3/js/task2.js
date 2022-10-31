@@ -1,5 +1,5 @@
 d3.csv("./output/energy_2021_census.csv", function (data) {
-    const margin = { top: 20, right: 50, bottom: 20, left: 50 },
+    const margin = {top: 20, right: 50, bottom: 20, left: 50},
         width = 600 - margin.left - margin.right,
         height = 350 - margin.top - margin.bottom;
 
@@ -63,9 +63,9 @@ d3.csv("./output/energy_2021_census.csv", function (data) {
             .domain([0, height])
             .interpolator(d3.interpolateBlues);
 
-        const scale = d3.scaleLinear().domain([0, max]).range([15 + height, 15]);
+        const scale = d3.scaleLinear().domain([0, max]).range([height, 0]);
         const y_axis = d3.axisRight().scale(scale).ticks(10);
-        svg.append('g').attr('transform', 'translate(' + [width + 15, 0] + ')').call(y_axis);
+        svg.append('g').attr('transform', 'translate(' + [width + 25, 0] + ')').call(y_axis);
 
         const lg = legend.append('linearGradient')
             .attr('id', 'gradient')
@@ -82,8 +82,8 @@ d3.csv("./output/energy_2021_census.csv", function (data) {
         }
 
         legend.append('rect')
-            .attr('x', width)
-            .attr('y', 15)
+            .attr('x', width + 10)
+            .attr('y', 0)
             .attr('width', 15)
             .attr('height', height)
             .style("fill", "url(#gradient)");
