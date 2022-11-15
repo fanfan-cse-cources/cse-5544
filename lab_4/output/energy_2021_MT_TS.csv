@@ -1,0 +1,232 @@
+,STATE,TYPE OF PRODUCER,GENERATION(Mwh)
+0,AK,"Combined Heat and Power, Commercial Power",350962.0
+1,AK,"Combined Heat and Power, Electric Power",199567.0
+2,AK,"Combined Heat and Power, Industrial Power",111166.0
+3,AK,"Electric Generators, Electric Utilities",5229885.0
+4,AK,"Electric Generators, Independent Power Producers",51947.0
+5,AL,"Combined Heat and Power, Electric Power",4031284.0
+6,AL,"Combined Heat and Power, Industrial Power",4640626.0
+7,AL,"Electric Generators, Electric Utilities",107332202.0
+8,AL,"Electric Generators, Independent Power Producers",26951021.0
+9,AR,"Combined Heat and Power, Commercial Power",62136.0
+10,AR,"Combined Heat and Power, Electric Power",1023489.0
+11,AR,"Combined Heat and Power, Industrial Power",1196173.0
+12,AR,"Electric Generators, Electric Utilities",53337372.0
+13,AR,"Electric Generators, Independent Power Producers",4610967.0
+14,AZ,"Combined Heat and Power, Commercial Power",154108.0
+15,AZ,"Combined Heat and Power, Electric Power",52607.0
+16,AZ,"Electric Generators, Electric Utilities",86348455.0
+17,AZ,"Electric Generators, Independent Power Producers",22053365.0
+18,CA,"Combined Heat and Power, Commercial Power",2400830.0
+19,CA,"Combined Heat and Power, Electric Power",12417290.0
+20,CA,"Combined Heat and Power, Industrial Power",13513448.0
+21,CA,"Electric Generators, Electric Utilities",61737283.0
+22,CA,"Electric Generators, Independent Power Producers",106658255.0
+23,CO,"Combined Heat and Power, Commercial Power",36299.0
+24,CO,"Combined Heat and Power, Electric Power",36629.0
+25,CO,"Combined Heat and Power, Industrial Power",256188.0
+26,CO,"Electric Generators, Electric Utilities",41364397.0
+27,CO,"Electric Generators, Independent Power Producers",15044204.0
+28,CT,"Combined Heat and Power, Commercial Power",316117.0
+29,CT,"Combined Heat and Power, Electric Power",123788.0
+30,CT,"Combined Heat and Power, Industrial Power",612115.0
+31,CT,"Electric Generators, Electric Utilities",94322.0
+32,CT,"Electric Generators, Independent Power Producers",42977227.0
+33,DC,"Combined Heat and Power, Commercial Power",192256.0
+34,DC,"Electric Generators, Independent Power Producers",25982.0
+35,DE,"Combined Heat and Power, Commercial Power",5393.0
+36,DE,"Combined Heat and Power, Electric Power",120682.0
+37,DE,"Combined Heat and Power, Industrial Power",911931.0
+38,DE,"Electric Generators, Electric Utilities",27602.0
+39,DE,"Electric Generators, Independent Power Producers",2974363.0
+40,FL,"Combined Heat and Power, Commercial Power",94938.0
+41,FL,"Combined Heat and Power, Electric Power",1687471.0
+42,FL,"Combined Heat and Power, Industrial Power",4627609.0
+43,FL,"Electric Generators, Electric Utilities",227993630.0
+44,FL,"Electric Generators, Independent Power Producers",9997385.0
+45,GA,"Combined Heat and Power, Commercial Power",4711.0
+46,GA,"Combined Heat and Power, Electric Power",527596.0
+47,GA,"Combined Heat and Power, Industrial Power",5095129.0
+48,GA,"Electric Generators, Electric Utilities",102646392.0
+49,GA,"Electric Generators, Independent Power Producers",18256917.0
+50,HI,"Combined Heat and Power, Commercial Power",364607.0
+51,HI,"Combined Heat and Power, Electric Power",2294287.0
+52,HI,"Combined Heat and Power, Industrial Power",221674.0
+53,HI,"Electric Generators, Electric Utilities",4721460.0
+54,HI,"Electric Generators, Independent Power Producers",1586065.0
+55,IA,"Combined Heat and Power, Commercial Power",142153.0
+56,IA,"Combined Heat and Power, Electric Power",4065.0
+57,IA,"Combined Heat and Power, Industrial Power",2065820.0
+58,IA,"Electric Generators, Electric Utilities",54854479.0
+59,IA,"Electric Generators, Independent Power Producers",9053749.0
+60,ID,"Combined Heat and Power, Commercial Power",68356.0
+61,ID,"Combined Heat and Power, Electric Power",67389.0
+62,ID,"Combined Heat and Power, Industrial Power",549112.0
+63,ID,"Electric Generators, Electric Utilities",10963688.0
+64,ID,"Electric Generators, Independent Power Producers",5300045.0
+65,IL,"Combined Heat and Power, Commercial Power",479423.0
+66,IL,"Combined Heat and Power, Electric Power",678169.0
+67,IL,"Combined Heat and Power, Industrial Power",2604843.0
+68,IL,"Electric Generators, Electric Utilities",4449699.0
+69,IL,"Electric Generators, Independent Power Producers",173647234.0
+70,IN,"Combined Heat and Power, Commercial Power",252338.0
+71,IN,"Combined Heat and Power, Electric Power",7702676.0
+72,IN,"Combined Heat and Power, Industrial Power",4635236.0
+73,IN,"Electric Generators, Electric Utilities",60991576.0
+74,IN,"Electric Generators, Independent Power Producers",20983341.0
+75,KS,"Combined Heat and Power, Commercial Power",14183.0
+76,KS,"Combined Heat and Power, Industrial Power",227115.0
+77,KS,"Electric Generators, Electric Utilities",33280052.0
+78,KS,"Electric Generators, Independent Power Producers",23224603.0
+79,KY,"Combined Heat and Power, Industrial Power",488379.0
+80,KY,"Electric Generators, Electric Utilities",69475329.0
+81,KY,"Electric Generators, Independent Power Producers",590555.0
+82,LA,"Combined Heat and Power, Commercial Power",178332.0
+83,LA,"Combined Heat and Power, Electric Power",2744341.0
+84,LA,"Combined Heat and Power, Industrial Power",27210836.0
+85,LA,"Electric Generators, Electric Utilities",63497633.0
+86,LA,"Electric Generators, Independent Power Producers",4430822.0
+87,MA,"Combined Heat and Power, Commercial Power",615109.0
+88,MA,"Combined Heat and Power, Electric Power",1545819.0
+89,MA,"Combined Heat and Power, Industrial Power",205260.0
+90,MA,"Electric Generators, Electric Utilities",475936.0
+91,MA,"Electric Generators, Independent Power Producers",16524875.0
+92,MD,"Combined Heat and Power, Commercial Power",903741.0
+93,MD,"Combined Heat and Power, Electric Power",2354505.0
+94,MD,"Combined Heat and Power, Industrial Power",48121.0
+95,MD,"Electric Generators, Electric Utilities",3471174.0
+96,MD,"Electric Generators, Independent Power Producers",32941750.0
+97,ME,"Combined Heat and Power, Commercial Power",97588.0
+98,ME,"Combined Heat and Power, Electric Power",383725.0
+99,ME,"Combined Heat and Power, Industrial Power",1791822.0
+100,ME,"Electric Generators, Electric Utilities",2757.0
+101,ME,"Electric Generators, Independent Power Producers",8676883.0
+102,MI,"Combined Heat and Power, Commercial Power",666788.0
+103,MI,"Combined Heat and Power, Electric Power",11961234.0
+104,MI,"Combined Heat and Power, Industrial Power",1309135.0
+105,MI,"Electric Generators, Electric Utilities",82022523.0
+106,MI,"Electric Generators, Independent Power Producers",20085706.0
+107,MN,"Combined Heat and Power, Commercial Power",294467.0
+108,MN,"Combined Heat and Power, Electric Power",1060443.0
+109,MN,"Combined Heat and Power, Industrial Power",1009953.0
+110,MN,"Electric Generators, Electric Utilities",42688351.0
+111,MN,"Electric Generators, Independent Power Producers",14574805.0
+112,MO,"Combined Heat and Power, Commercial Power",194533.0
+113,MO,"Combined Heat and Power, Electric Power",35308.0
+114,MO,"Combined Heat and Power, Industrial Power",43681.0
+115,MO,"Electric Generators, Electric Utilities",70672592.0
+116,MO,"Electric Generators, Independent Power Producers",6869866.0
+117,MS,"Combined Heat and Power, Commercial Power",0.0
+118,MS,"Combined Heat and Power, Industrial Power",1973656.0
+119,MS,"Electric Generators, Electric Utilities",63535757.0
+120,MS,"Electric Generators, Independent Power Producers",3203912.0
+121,MT,"Combined Heat and Power, Electric Power",454274.0
+122,MT,"Combined Heat and Power, Industrial Power",35041.0
+123,MT,"Electric Generators, Electric Utilities",10341964.0
+124,MT,"Electric Generators, Independent Power Producers",13635359.0
+125,NC,"Combined Heat and Power, Commercial Power",272099.0
+126,NC,"Combined Heat and Power, Electric Power",214176.0
+127,NC,"Combined Heat and Power, Industrial Power",1785586.0
+128,NC,"Electric Generators, Electric Utilities",110756159.0
+129,NC,"Electric Generators, Independent Power Producers",18234662.0
+130,ND,"Combined Heat and Power, Commercial Power",1062.0
+131,ND,"Combined Heat and Power, Industrial Power",151658.0
+132,ND,"Electric Generators, Electric Utilities",33414347.0
+133,ND,"Electric Generators, Independent Power Producers",9138170.0
+134,NE,"Combined Heat and Power, Commercial Power",17924.0
+135,NE,"Combined Heat and Power, Industrial Power",344119.0
+136,NE,"Electric Generators, Electric Utilities",28818114.0
+137,NE,"Electric Generators, Independent Power Producers",9464488.0
+138,NH,"Combined Heat and Power, Commercial Power",64791.0
+139,NH,"Combined Heat and Power, Industrial Power",29005.0
+140,NH,"Electric Generators, Electric Utilities",660628.0
+141,NH,"Electric Generators, Independent Power Producers",16680566.0
+142,NJ,"Combined Heat and Power, Commercial Power",643265.0
+143,NJ,"Combined Heat and Power, Electric Power",6911564.0
+144,NJ,"Combined Heat and Power, Industrial Power",471205.0
+145,NJ,"Electric Generators, Electric Utilities",62574.0
+146,NJ,"Electric Generators, Independent Power Producers",53297915.0
+147,NM,"Combined Heat and Power, Commercial Power",121998.0
+148,NM,"Combined Heat and Power, Electric Power",20252.0
+149,NM,"Combined Heat and Power, Industrial Power",47907.0
+150,NM,"Electric Generators, Electric Utilities",21893409.0
+151,NM,"Electric Generators, Independent Power Producers",13187732.0
+152,NV,"Combined Heat and Power, Commercial Power",627385.0
+153,NV,"Combined Heat and Power, Electric Power",2183913.0
+154,NV,"Combined Heat and Power, Industrial Power",337614.0
+155,NV,"Electric Generators, Electric Utilities",27261574.0
+156,NV,"Electric Generators, Independent Power Producers",11469702.0
+157,NY,"Combined Heat and Power, Commercial Power",1283599.0
+158,NY,"Combined Heat and Power, Electric Power",11479531.0
+159,NY,"Combined Heat and Power, Industrial Power",823690.0
+160,NY,"Electric Generators, Electric Utilities",37266097.0
+161,NY,"Electric Generators, Independent Power Producers",74373104.0
+162,OH,"Combined Heat and Power, Commercial Power",253877.0
+163,OH,"Combined Heat and Power, Electric Power",1593691.0
+164,OH,"Combined Heat and Power, Industrial Power",746446.0
+165,OH,"Electric Generators, Electric Utilities",12554826.0
+166,OH,"Electric Generators, Independent Power Producers",108186770.0
+167,OK,"Combined Heat and Power, Commercial Power",0.0
+168,OK,"Combined Heat and Power, Industrial Power",839102.0
+169,OK,"Electric Generators, Electric Utilities",36250896.0
+170,OK,"Electric Generators, Independent Power Producers",43474125.0
+171,OR,"Combined Heat and Power, Commercial Power",81271.0
+172,OR,"Combined Heat and Power, Electric Power",5909188.0
+173,OR,"Combined Heat and Power, Industrial Power",631596.0
+174,OR,"Electric Generators, Electric Utilities",39845286.0
+175,OR,"Electric Generators, Independent Power Producers",14614496.0
+176,PA,"Combined Heat and Power, Commercial Power",384085.0
+177,PA,"Combined Heat and Power, Electric Power",7924378.0
+178,PA,"Combined Heat and Power, Industrial Power",2728318.0
+179,PA,"Electric Generators, Electric Utilities",108593.0
+180,PA,"Electric Generators, Independent Power Producers",230502987.0
+181,RI,"Combined Heat and Power, Commercial Power",57447.0
+182,RI,"Combined Heat and Power, Industrial Power",137274.0
+183,RI,"Electric Generators, Electric Utilities",2.0
+184,RI,"Electric Generators, Independent Power Producers",7840292.0
+185,SC,"Combined Heat and Power, Commercial Power",2208.0
+186,SC,"Combined Heat and Power, Electric Power",681914.0
+187,SC,"Combined Heat and Power, Industrial Power",1804883.0
+188,SC,"Electric Generators, Electric Utilities",94331674.0
+189,SC,"Electric Generators, Independent Power Producers",3103724.0
+190,SD,"Combined Heat and Power, Commercial Power",12.0
+191,SD,"Combined Heat and Power, Industrial Power",28443.0
+192,SD,"Electric Generators, Electric Utilities",9905268.0
+193,SD,"Electric Generators, Independent Power Producers",7900910.0
+194,TN,"Combined Heat and Power, Commercial Power",205812.0
+195,TN,"Combined Heat and Power, Industrial Power",2204479.0
+196,TN,"Electric Generators, Electric Utilities",78603226.0
+197,TN,"Electric Generators, Independent Power Producers",465366.0
+198,TX,"Combined Heat and Power, Commercial Power",612266.0
+199,TX,"Combined Heat and Power, Electric Power",41947893.0
+200,TX,"Combined Heat and Power, Industrial Power",41286435.0
+201,TX,"Electric Generators, Electric Utilities",82082918.0
+202,TX,"Electric Generators, Independent Power Producers",317632263.0
+203,UT,"Combined Heat and Power, Commercial Power",126451.0
+204,UT,"Combined Heat and Power, Electric Power",53816.0
+205,UT,"Combined Heat and Power, Industrial Power",416951.0
+206,UT,"Electric Generators, Electric Utilities",37112552.0
+207,UT,"Electric Generators, Independent Power Producers",4947012.0
+208,VA,"Combined Heat and Power, Commercial Power",331937.0
+209,VA,"Combined Heat and Power, Electric Power",1012106.0
+210,VA,"Combined Heat and Power, Industrial Power",2333896.0
+211,VA,"Electric Generators, Electric Utilities",73103689.0
+212,VA,"Electric Generators, Independent Power Producers",17527389.0
+213,VT,"Combined Heat and Power, Commercial Power",3141.0
+214,VT,"Electric Generators, Electric Utilities",915002.0
+215,VT,"Electric Generators, Independent Power Producers",1229589.0
+216,WA,"Combined Heat and Power, Commercial Power",28075.0
+217,WA,"Combined Heat and Power, Industrial Power",2101579.0
+218,WA,"Electric Generators, Electric Utilities",94110726.0
+219,WA,"Electric Generators, Independent Power Producers",12882338.0
+220,WI,"Combined Heat and Power, Commercial Power",139559.0
+221,WI,"Combined Heat and Power, Electric Power",943291.0
+222,WI,"Combined Heat and Power, Industrial Power",1451526.0
+223,WI,"Electric Generators, Electric Utilities",51160713.0
+224,WI,"Electric Generators, Independent Power Producers",11783588.0
+225,WV,"Combined Heat and Power, Industrial Power",1286665.0
+226,WV,"Electric Generators, Electric Utilities",47093799.0
+227,WV,"Electric Generators, Independent Power Producers",17250096.0
+228,WY,"Combined Heat and Power, Industrial Power",2234720.0
+229,WY,"Electric Generators, Electric Utilities",37365468.0
+230,WY,"Electric Generators, Independent Power Producers",4050482.0
