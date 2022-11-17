@@ -202,31 +202,36 @@
 200,TX,"Combined Heat and Power, Industrial Power",41286435.0
 201,TX,"Electric Generators, Electric Utilities",82082918.0
 202,TX,"Electric Generators, Independent Power Producers",317632263.0
-203,UT,"Combined Heat and Power, Commercial Power",126451.0
-204,UT,"Combined Heat and Power, Electric Power",53816.0
-205,UT,"Combined Heat and Power, Industrial Power",416951.0
-206,UT,"Electric Generators, Electric Utilities",37112552.0
-207,UT,"Electric Generators, Independent Power Producers",4947012.0
-208,VA,"Combined Heat and Power, Commercial Power",331937.0
-209,VA,"Combined Heat and Power, Electric Power",1012106.0
-210,VA,"Combined Heat and Power, Industrial Power",2333896.0
-211,VA,"Electric Generators, Electric Utilities",73103689.0
-212,VA,"Electric Generators, Independent Power Producers",17527389.0
-213,VT,"Combined Heat and Power, Commercial Power",3141.0
-214,VT,"Electric Generators, Electric Utilities",915002.0
-215,VT,"Electric Generators, Independent Power Producers",1229589.0
-216,WA,"Combined Heat and Power, Commercial Power",28075.0
-217,WA,"Combined Heat and Power, Industrial Power",2101579.0
-218,WA,"Electric Generators, Electric Utilities",94110726.0
-219,WA,"Electric Generators, Independent Power Producers",12882338.0
-220,WI,"Combined Heat and Power, Commercial Power",139559.0
-221,WI,"Combined Heat and Power, Electric Power",943291.0
-222,WI,"Combined Heat and Power, Industrial Power",1451526.0
-223,WI,"Electric Generators, Electric Utilities",51160713.0
-224,WI,"Electric Generators, Independent Power Producers",11783588.0
-225,WV,"Combined Heat and Power, Industrial Power",1286665.0
-226,WV,"Electric Generators, Electric Utilities",47093799.0
-227,WV,"Electric Generators, Independent Power Producers",17250096.0
-228,WY,"Combined Heat and Power, Industrial Power",2234720.0
-229,WY,"Electric Generators, Electric Utilities",37365468.0
-230,WY,"Electric Generators, Independent Power Producers",4050482.0
+203,US-TOTAL,"Combined Heat and Power, Commercial Power",13147622.0
+204,US-TOTAL,"Combined Heat and Power, Electric Power",132382347.0
+205,US-TOTAL,"Combined Heat and Power, Industrial Power",139607169.0
+206,US-TOTAL,"Electric Generators, Electric Utilities",2216234058.0
+207,US-TOTAL,"Electric Generators, Independent Power Producers",1614168959.0
+208,UT,"Combined Heat and Power, Commercial Power",126451.0
+209,UT,"Combined Heat and Power, Electric Power",53816.0
+210,UT,"Combined Heat and Power, Industrial Power",416951.0
+211,UT,"Electric Generators, Electric Utilities",37112552.0
+212,UT,"Electric Generators, Independent Power Producers",4947012.0
+213,VA,"Combined Heat and Power, Commercial Power",331937.0
+214,VA,"Combined Heat and Power, Electric Power",1012106.0
+215,VA,"Combined Heat and Power, Industrial Power",2333896.0
+216,VA,"Electric Generators, Electric Utilities",73103689.0
+217,VA,"Electric Generators, Independent Power Producers",17527389.0
+218,VT,"Combined Heat and Power, Commercial Power",3141.0
+219,VT,"Electric Generators, Electric Utilities",915002.0
+220,VT,"Electric Generators, Independent Power Producers",1229589.0
+221,WA,"Combined Heat and Power, Commercial Power",28075.0
+222,WA,"Combined Heat and Power, Industrial Power",2101579.0
+223,WA,"Electric Generators, Electric Utilities",94110726.0
+224,WA,"Electric Generators, Independent Power Producers",12882338.0
+225,WI,"Combined Heat and Power, Commercial Power",139559.0
+226,WI,"Combined Heat and Power, Electric Power",943291.0
+227,WI,"Combined Heat and Power, Industrial Power",1451526.0
+228,WI,"Electric Generators, Electric Utilities",51160713.0
+229,WI,"Electric Generators, Independent Power Producers",11783588.0
+230,WV,"Combined Heat and Power, Industrial Power",1286665.0
+231,WV,"Electric Generators, Electric Utilities",47093799.0
+232,WV,"Electric Generators, Independent Power Producers",17250096.0
+233,WY,"Combined Heat and Power, Industrial Power",2234720.0
+234,WY,"Electric Generators, Electric Utilities",37365468.0
+235,WY,"Electric Generators, Independent Power Producers",4050482.0
