@@ -30,23 +30,28 @@ function drawUSMap (data, task3DataLoaded, task4DataLoaded) {
       }
     })
 
-    const mouthLeave = function (d) {
-      d3.selectAll('.state')
-        .transition()
-        .duration(200)
-        .style('opacity', 1)
+    const hoverInfo = d3.select('#us_map')
+      .append('div')
+      .style('opacity', 0)
+      .attr('class', 'position-absolute')
+      .style('background-color', 'white')
+      .style('border', 'solid')
+      .style('border-width', '1px')
+      .style('border-radius', '2px')
+      .style('padding', '2px')
+      .attr('data-html', 'true')
+
+    const mouseMove = function (d) {
+      hoverInfo.html(`${d.properties.name} <br />Generation: ${parseInt(d.generation)}`)
+        .style('left', (d3.event.x + 30) + 'px')
+        .style('top', (d3.event.y) + 'px')
     }
     const mouseOver = function (d) {
-      d3.selectAll('.state')
-        .transition()
-        .duration(200)
-        .style('opacity', 0.7)
-      d3.select(this)
-        .transition()
-        .duration(200)
-        .style('opacity', 1)
+      hoverInfo.style('opacity', 1)
     }
-
+    const mouthLeave = function (d) {
+      hoverInfo.style('opacity', 0)
+    }
     const mouseClick = function (d) {
       let stateCode
 
@@ -62,7 +67,7 @@ function drawUSMap (data, task3DataLoaded, task4DataLoaded) {
       updatePie(task4DataLoaded, stateCode)
     }
 
-    svg.selectAll('path')
+    const statePath = svg.selectAll('path')
       .data(states.features)
       .enter()
       .append('path')
@@ -71,9 +76,19 @@ function drawUSMap (data, task3DataLoaded, task4DataLoaded) {
       .style('fill', function (d) {
         return colorScale(d.generation)
       })
+      .on('mousemove', mouseMove)
       .on('mouseover', mouseOver)
       .on('mouseleave', mouthLeave)
       .on('click', mouseClick)
+
+    const zoom = d3.zoom()
+      .scaleExtent([1, 5])
+      .on('zoom', zoomed)
+
+    function zoomed () {
+      statePath.attr('transform', d3.event.transform)
+    }
+    svg.call(zoom)
 
     svg.selectAll('.state').style('stroke', '#aaa')
 
