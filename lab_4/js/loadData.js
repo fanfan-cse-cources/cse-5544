@@ -11,20 +11,19 @@ d3.queue()
 function dataLoader (error, task2DataLoaded, task3DataLoaded, task4DataLoaded) {
   const currentState = 'US-TOTAL'
   if (error) throw error
-  drawUSMap(task2DataLoaded)
+  drawUSMap(task2DataLoaded, task3DataLoaded, task4DataLoaded)
   drawBar(task3DataLoaded, currentState)
   drawPie(task4DataLoaded, currentState)
 }
 
 function updateBar (task3DataLoaded, currentState) {
-  svg = d3.select('#bar svg').remove()
+  svg = d3.select('#bar')
+  svg.selectAll('svg').remove()
   drawBar(task3DataLoaded, currentState)
 }
 
-function updatePie (state, task4DataLoaded) {
+function updatePie (task4DataLoaded, currentState) {
   const svg = d3.select('#pie')
-  svg.selectAll('text').remove()
-  svg.selectAll('circle').remove()
-  svg.selectAll('path').remove()
-  drawPie(task4DataLoaded, state.code)
+  svg.selectAll('svg').remove()
+  drawPie(task4DataLoaded, currentState)
 }

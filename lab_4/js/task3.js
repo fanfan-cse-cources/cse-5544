@@ -16,7 +16,6 @@ function drawBar (data, currentState) {
     data.forEach(function (item) {
       if (item.STATE === currentState && parseInt(item.MONTH) === m) {
         usTotalGen.push(parseFloat(item['GENERATION(Mwh)']))
-        console.log(item)
       }
     })
   })

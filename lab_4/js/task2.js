@@ -1,4 +1,4 @@
-function drawUSMap (data) {
+function drawUSMap (data, task3DataLoaded, task4DataLoaded) {
   const margin = { top: 20, right: 50, bottom: 20, left: 50 }
   const width = 600 - margin.left - margin.right
   const height = 400 - margin.top - margin.bottom
@@ -47,6 +47,21 @@ function drawUSMap (data) {
         .style('opacity', 1)
     }
 
+    const mouseClick = function (d) {
+      let stateCode
+
+      for (const i in data) {
+        if (data[i].State === d.properties.name) {
+          stateCode = data[i]['State Code']
+        }
+      }
+
+      d3.selectAll('.state').style('stroke', '#aaa')
+      d3.select(this).style('stroke', 'red')
+      updateBar(task3DataLoaded, stateCode)
+      updatePie(task4DataLoaded, stateCode)
+    }
+
     svg.selectAll('path')
       .data(states.features)
       .enter()
@@ -58,6 +73,9 @@ function drawUSMap (data) {
       })
       .on('mouseover', mouseOver)
       .on('mouseleave', mouthLeave)
+      .on('click', mouseClick)
+
+    svg.selectAll('.state').style('stroke', '#aaa')
 
     const color = d3.scaleSequential()
       .domain([0, height])
