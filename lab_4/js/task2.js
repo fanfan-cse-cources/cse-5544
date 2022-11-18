@@ -1,4 +1,4 @@
-d3.csv('./output/energy_2021_census.csv', function (data) {
+function drawUSMap (data) {
   const margin = { top: 20, right: 50, bottom: 20, left: 50 }
   const width = 600 - margin.left - margin.right
   const height = 400 - margin.top - margin.bottom
@@ -96,4 +96,4 @@ d3.csv('./output/energy_2021_census.csv', function (data) {
       .text('2021 Electricity Generation on Map')
       .attr('transform', 'translate(0, 0)')
   })
-})
+}

@@ -1,4 +1,4 @@
-d3.csv('./output/energy_2021_MSG.csv', function (data) {
+function drawBar (data, currentState) {
   const margin = { top: 20, right: 50, bottom: 20, left: 50 }
   const width = 600 - margin.left - margin.right
   const height = 400 - margin.top - margin.bottom
@@ -11,7 +11,6 @@ d3.csv('./output/energy_2021_MSG.csv', function (data) {
 
   const month = [...Array(12).keys()].map(i => i + 1)
   const usTotalGen = []
-  const currentState = 'US-TOTAL'
 
   month.forEach(function (m) {
     data.forEach(function (item) {
@@ -72,4 +71,4 @@ d3.csv('./output/energy_2021_MSG.csv', function (data) {
     .style('font-size', '16px')
     .text(`2021 ${currentState} Monthly Electricity Generation`)
     .attr('transform', 'translate(75, 0)')
-})
+}

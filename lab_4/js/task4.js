@@ -1,4 +1,4 @@
-d3.csv('./output/energy_2021_MT_TS.csv', function (data) {
+function drawPie (data, currentState) {
   const margin = { top: 20, right: 50, bottom: 20, left: 50 }
   const width = 800 - margin.left - margin.right
   const height = 400 - margin.top - margin.bottom
@@ -13,7 +13,6 @@ d3.csv('./output/energy_2021_MT_TS.csv', function (data) {
   let counter = 0
   let total = 0
   const totalData = []
-  const currentState = 'US-TOTAL'
 
   for (let i = 0; i < data.length; i++) {
     if (data[i].STATE === currentState) {
@@ -99,4 +98,4 @@ d3.csv('./output/energy_2021_MT_TS.csv', function (data) {
     .style('font-size', '16px')
     .text(`2021 ${currentState} Electricity Generation by Different Producer`)
     .attr('transform', 'translate(0, 25)')
-})
+}
