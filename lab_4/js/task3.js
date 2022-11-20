@@ -52,7 +52,7 @@ function drawBar (data, currentState) {
       }
     })
 
-  bar.append('rect')
+  const rect = bar.append('rect')
     .attr('x', 75)
     .attr('width', function () {
       return x.bandwidth()
@@ -62,6 +62,26 @@ function drawBar (data, currentState) {
         return height - y(d['GENERATION(Mwh)'])
       }
     }).attr('transform', 'translate(0, 20)')
+    .attr('fill', 'steelblue')
+
+  const rectG = svg.append('g')
+
+  const brush = d3.brush()
+    .extent([[0, 0], [width + margin.left + margin.right, height]])
+    .on('start', brushed)
+    .on('brush', brushed)
+
+  rectG.call(brush)
+
+  function brushed () {
+    const extent = d3.event.selection
+    rect.classed('selected', function (d) {
+      return ((x(parseInt(d.MONTH)) + 75 >= extent[0][0]) &&
+          (x(parseInt(d.MONTH)) <= extent[1][0])) &&
+        height >= extent[0][1] &&
+        y(parseInt(d['GENERATION(Mwh)'])) <= extent[1][1]
+    })
+  }
 
   svg.append('text')
     .attr('x', width / 2)

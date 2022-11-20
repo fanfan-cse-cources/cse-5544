@@ -10,7 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/d3-color@3"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-scale-chromatic@3"></script>
-    <link href="./stylesheet/task3.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -18,6 +17,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12" id="us_map"></div>
+            <style>
+                .selected {
+                    fill: yellow;
+                    stroke: brown;
+                }
+            </style>
             <div class="col-lg-6 col-md-12" id="bar"></div>
         </div>
 
