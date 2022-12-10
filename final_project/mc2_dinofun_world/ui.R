@@ -8,26 +8,32 @@
 #
 
 library(shiny)
+library(plotly)
+library(rsconnect)
+library(lubridate)
+library(dplyr)
+library(ggplot2)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel(""),
 
     # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 25,
-                        value = 30)
+            sliderInput("time_slot",
+                        "Time slots:",
+                        min = 8,
+                        max = 23,
+                        value = 8,
+                        step = 1)
         ),
 
         # Show a plot of the generated distribution
         mainPanel(
-            plotOutput("distPlot")
+            plotOutput("p1")
         )
     )
 ))
