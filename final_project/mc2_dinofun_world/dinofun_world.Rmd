@@ -1,0 +1,49 @@
+---
+title: "dinofun_world"
+output: html_document
+date: "2022-12-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(lubridate)
+library(dplyr)
+library(ggplot2)
+```
+
+## Message Frequency by Location/Hours (Sender)
+
+```{r}
+fri_combined <- read.csv(file="../outputs/comm-data-Fri.csv")
+fri_combined <- subset(fri_combined, select = -c(to))
+fri_combined$from <- as.character(fri_combined$from)
+fri_combined$timestamp <- as.POSIXct(fri_combined$timestamp, "%Y-%m-%d %H:%M:%S", tz = "")
+```
+
+```{r}
+# get message frequency by time
+time_slot <- 12
+location_filter <- c('Coaster Alley', 'Entry Corridor', 'Kiddie Land', 'Tundra Land', 'Wet Land')
+
+res <- fri_combined %>%
+  filter(hour(fri_combined$timestamp) == time_slot & location %in% location_filter) %>%
+  group_by(from, location) %>%
+  summarise(msg_freq = sum(to_num), .groups = 'keep') %>%
+  arrange(desc(msg_freq)) %>%
+  head(20)
+
+p <- ggplot(data = res,
+    mapping = aes(
+      x = reorder(from, msg_freq), 
+      y = msg_freq,
+      fill = location)
+    )
+
+p + geom_col() +
+  labs(x = "Sender UID", 
+       y = "Message Frequency") +
+  scale_y_log10() +
+  coord_flip() +
+  geom_text(aes(label = msg_freq))
+```
