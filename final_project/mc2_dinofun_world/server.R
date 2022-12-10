@@ -13,10 +13,15 @@ library(lubridate)
 library(dplyr)
 library(ggplot2)
 
-fri_combined <- read.csv(file="../outputs/comm-data-Fri.csv")
-fri_combined <- subset(fri_combined, select = -c(to))
-fri_combined$from <- as.character(fri_combined$from)
-fri_combined$timestamp <- as.POSIXct(fri_combined$timestamp, "%Y-%m-%d %H:%M:%S", tz = "")
+proc_data <- function(path) {
+  dat <- subset(read.csv(file=path), select = -c(to))
+  dat$from <- as.character(dat$from)
+  dat$timestamp <- as.POSIXct(dat$timestamp, "%Y-%m-%d %H:%M:%S", tz = "")
+  
+  return(dat)
+}
+
+fri_combined <- proc_data("../outputs/comm-data-Fri.csv")
 
 # Define server logic
 ## what need to be shiny: time_slot
