@@ -28,7 +28,12 @@ shinyUI(fluidPage(
                         min = 7,
                         max = 23,
                         value = 8,
-                        step = 1)
+                        step = 1),
+
+            checkboxGroupInput("location",
+                               "Choose locations:",
+                               c("Coaster Alley", "Entry Corridor", 
+                                 "Kiddie Land", "Tundra Land", "Wet Land"))
         ),
 
         # Show a plot of the generated distribution
