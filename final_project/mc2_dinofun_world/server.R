@@ -12,6 +12,7 @@ library(rsconnect)
 library(lubridate)
 library(dplyr)
 library(ggplot2)
+library(ggpubr)
 
 proc_data <- function(path) {
   dat <- subset(read.csv(file=path), select = -c(to))
@@ -28,7 +29,7 @@ fri_combined <- proc_data("../outputs/comm-data-Fri.csv")
 shinyServer(function(input, output) {
 
     output$p1 <- renderPlot({
-      
+      location_filter <- c('Coaster Alley', 'Entry Corridor', 'Kiddie Land', 'Tundra Land', 'Wet Land')
       res <- fri_combined %>%
         filter(hour(fri_combined$timestamp) == input$time_slot & location %in% location_filter) %>%
         group_by(from, location) %>%
@@ -36,7 +37,7 @@ shinyServer(function(input, output) {
         arrange(desc(msg_freq)) %>%
         head(20)
       
-      ggplot(data = res,
+      a <- ggplot(data = res,
              mapping = aes(x = reorder(from, msg_freq), 
                            y = msg_freq,
                            fill = location)) +
@@ -48,7 +49,23 @@ shinyServer(function(input, output) {
         scale_y_log10() +
         coord_flip() +
         geom_text(aes(label = msg_freq), size = 3, hjust = 1.2)
+      
+      res_pie <- subset(res, select = -c(from)) %>%
+        group_by(location) %>%
+        summarise(msg_freq = sum(msg_freq), .groups = 'keep')
+      
+      b <- ggplot(data = res_pie, aes(x = "", y = location, fill = location)) +
+        geom_bar(stat="identity", width=1) +
+        coord_polar("y", start=0) +
+        labs(fill = "Location", title = "Location of Most Frequent Messages") + 
+        geom_text(aes(label = msg_freq), position = position_stack(vjust = 0.5)) +
+        theme_void()
+      
+      ggarrange(a, b,
+                common.legend = TRUE, legend = "bottom")
 
     })
+    
+
 
 })

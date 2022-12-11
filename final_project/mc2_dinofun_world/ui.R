@@ -25,7 +25,7 @@ shinyUI(fluidPage(
         sidebarPanel(
             sliderInput("time_slot",
                         "Time slots:",
-                        min = 8,
+                        min = 7,
                         max = 23,
                         value = 8,
                         step = 1)
