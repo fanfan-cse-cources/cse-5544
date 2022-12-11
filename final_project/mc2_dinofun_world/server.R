@@ -23,15 +23,23 @@ proc_data <- function(path) {
 }
 
 fri_combined <- proc_data("../outputs/comm-data-Fri.csv")
+sat_combined <- proc_data("../outputs/comm-data-Sat.csv")
+sun_combined <- proc_data("../outputs/comm-data-Sun.csv")
 
 # Define server logic
-## what need to be shiny: time_slot
 shinyServer(function(input, output) {
-
+  
+  ## get the string version of the dataset input name
+  base <- reactive({get(input$data)})  
+  
+    ## first plot tab
     output$p1 <- renderPlot({
-      location_filter <- c('Coaster Alley', 'Entry Corridor', 'Kiddie Land', 'Tundra Land', 'Wet Land')
-      res <- fri_combined %>%
-        filter(hour(fri_combined$timestamp) == input$time_slot & location %in% input$location) %>%
+      
+      ## save the data frame into a variable
+      mydata <- base()
+      
+      res <- mydata %>%
+        filter(hour(mydata$timestamp) == input$time_slot & location %in% input$location) %>%
         group_by(from, location) %>%
         summarise(msg_freq = sum(to_num), .groups = 'keep') %>%
         arrange(desc(msg_freq)) %>%
@@ -44,7 +52,8 @@ shinyServer(function(input, output) {
         geom_col() +
         labs(x = "Sender UID", 
              y = "Message Frequency",
-             fill = "Location") +
+             fill = "Location",
+             title = "Message Frequency by Sender UID") +
         theme(plot.title = element_text(hjust = 0.5),
               panel.background = element_blank(),
               axis.line = element_line(colour = "black")) + 
@@ -58,13 +67,18 @@ shinyServer(function(input, output) {
       
       b <- ggplot(data = res_pie, 
                   aes(x = "", 
-                      y = location, 
+                      y = msg_freq, 
                       fill = location)) +
         geom_bar(aes(fill = location), stat = "identity", width = 1) +
         coord_polar("y", start = 0) +
-        labs(fill = "Location") + 
+        labs(fill = "Location",
+             title = "Message Frequency by Location") + 
         geom_text(aes(label = msg_freq), position = position_stack(vjust = 0.5)) +
-        theme_void()
+        theme(axis.title = element_blank(),
+              axis.text = element_blank(),
+              axis.ticks = element_blank(),
+              panel.background = element_blank(),
+              plot.title = element_text(hjust = 0.5))
       
       output_plot <- ggarrange(a, b, common.legend = TRUE, legend = "bottom")
       

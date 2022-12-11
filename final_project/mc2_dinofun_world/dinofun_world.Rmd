@@ -28,35 +28,61 @@ proc_data <- function(path) {
 ```{r}
 # get message frequency by time
 fri_combined <- proc_data("../outputs/comm-data-Fri.csv")
-time_slot <- 8
-location_filter <- c('Coaster Alley', 'Entry Corridor', 'Kiddie Land', 'Tundra Land', 'Wet Land')
-
-res <- fri_combined %>%
-  filter(hour(fri_combined$timestamp) == time_slot & location %in% location_filter) %>%
-  group_by(from, location) %>%
-  summarise(msg_freq = sum(to_num), .groups = 'keep') %>%
-  arrange(desc(msg_freq)) %>%
-  head(15)
-
-a <- ggplot(data = res,
-       mapping = aes(x = reorder(from, msg_freq), 
-                     y = msg_freq,
-                     fill = location)) +
-  geom_col() +
-  labs(x = "Sender UID", 
-       y = "Message Frequency") +
-  scale_y_log10() +
-  coord_flip() +
-  geom_text(aes(label = msg_freq), size = 3, hjust = 1.2)
+sat_combined <- proc_data("../outputs/comm-data-Sat.csv")
+sun_combined <- proc_data("../outputs/comm-data-Sun.csv")
 ```
 
 ```{r}
-b <- ggplot(data = res, aes(x="", y=location, fill=location)) +
-  geom_bar(stat="identity", width=1) +
-  coord_polar("y", start=0) +
-  labs(fill = "Location") + 
-  theme_void()
+time_slot <- 9
+location_filter <- c('Coaster Alley', 'Entry Corridor', 'Kiddie Land', 'Tundra Land', 'Wet Land')
 
-ggarrange(a, b, labels = c("A", "B"),
-          common.legend = TRUE, legend = "bottom")
+res <- sat_combined %>%
+  filter(hour(sat_combined$timestamp) == time_slot & location %in% location_filter) %>%
+  group_by(from, location) %>%
+  summarise(msg_freq = sum(to_num), .groups = 'keep') %>%
+  arrange(desc(msg_freq)) %>%
+  head(20)
+
+a <- ggplot(data = res,
+                  mapping = aes(x = reorder(from, msg_freq), 
+                                y = msg_freq,
+                                fill = location)) +
+        geom_col() +
+        labs(x = "Sender UID", 
+             y = "Message Frequency",
+             fill = "Location",
+             title = "Message Frequency by Sender UID") +
+        theme(plot.title = element_text(hjust = 0.5),
+              panel.background = element_blank(),
+              axis.line = element_line(colour = "black")) + 
+        scale_y_log10() +
+        coord_flip() +
+        geom_text(aes(label = msg_freq), size = 3, hjust = 1.2)
+```
+
+```{r}
+res_pie <- subset(res, select = -c(from)) %>%
+        group_by(location) %>%
+        summarise(msg_freq = sum(msg_freq), .groups = 'keep')
+
+b <- ggplot(data = res_pie, 
+                  aes(x = "", 
+                      y = msg_freq, 
+                      fill = location)) +
+  geom_bar(aes(fill = location), stat = "identity", width = 1) +
+  coord_polar("y", start = 0) +
+  labs(fill = "Location",
+       title = "Message Frequency by Location") + 
+  geom_text(aes(label = msg_freq), position = position_stack(vjust = 0.5)) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.background = element_blank(),
+        plot.title = element_text(hjust = 0.5))
+
+output_plot <- ggarrange(a, b, common.legend = TRUE, legend = "bottom")
+      
+      annotate_figure(output_plot, top = text_grob("Message Frequency (Sender)",
+                                                   face = "bold",
+                                                   size = 20))
 ```

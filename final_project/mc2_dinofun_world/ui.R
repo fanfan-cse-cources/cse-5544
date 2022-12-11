@@ -13,6 +13,7 @@ library(rsconnect)
 library(lubridate)
 library(dplyr)
 library(ggplot2)
+library(shinyWidgets)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -20,28 +21,37 @@ shinyUI(fluidPage(
     # Application title
     titlePanel(""),
 
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("time_slot",
-                        "Select hours:",
-                        min = 8,
-                        max = 23,
-                        value = 8,
-                        step = 1,
-                        ticks = FALSE),
+    ## create tab structure
+    tabsetPanel(
+      
+      ## create first tab side bar     
+      tabPanel("Message Frequency (Sender)", fluid = TRUE,
+             sidebarLayout(
+               sidebarPanel(
+                 radioButtons("data",
+                              "Choose work day:",
+                              c("Friday" = "fri_combined",
+                                "Saturday" = "sat_combined",
+                                "Sunday" = "sun_combined")),
+                 
+                 sliderTextInput("time_slot",
+                                 "Select hours:",
+                                 choices = c(8:23),
+                                 grid = TRUE),
+                 
+                 checkboxGroupInput("location",
+                                    "Choose locations:",
+                                    c("Coaster Alley", "Entry Corridor", 
+                                      "Kiddie Land", "Tundra Land", "Wet Land"),
+                                    selected = c("Coaster Alley", "Entry Corridor", 
+                                                 "Kiddie Land", "Tundra Land", "Wet Land"))
+               ),
 
-            checkboxGroupInput("location",
-                               "Choose locations:",
-                               c("Coaster Alley", "Entry Corridor", 
-                                 "Kiddie Land", "Tundra Land", "Wet Land"),
-                               selected = c("Coaster Alley", "Entry Corridor", 
-                                            "Kiddie Land", "Tundra Land", "Wet Land"))
-        ),
-
-        # Show a plot of the generated distribution
+        # first tab plot
         mainPanel(
             plotOutput("p1")
         )
+      )
+    )
     )
 ))
