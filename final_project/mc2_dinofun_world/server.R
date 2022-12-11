@@ -30,7 +30,7 @@ shinyServer(function(input, output) {
     output$p1 <- renderPlot({
       
       res <- fri_combined %>%
-        filter(hour(fri_combined$timestamp) == input$time_slot & location %in% location_filter) %>%
+        filter(hour(fri_combined$timestamp) == input$time_slot & location %in% input$location) %>%
         group_by(from, location) %>%
         summarise(msg_freq = sum(to_num), .groups = 'keep') %>%
         arrange(desc(msg_freq)) %>%
