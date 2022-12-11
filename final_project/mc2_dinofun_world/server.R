@@ -119,9 +119,11 @@ shinyServer(function(input, output) {
       freq_calculator <- function(data, workday){
         output <- data %>%
           mutate(hour = hour(timestamp)) %>%
-          select(to_num, hour) %>%
+          select(to_num, hour, to_ext) %>%
           group_by(hour) %>%
           mutate(freq = sum(to_num)) %>%
+          mutate(int_freq = sum(to_num) - sum(to_ext)) %>%
+          mutate(ext_freq = sum(to_ext)) %>%
           select(-to_num) %>%
           filter(!duplicated(hour)) %>%
           mutate(weekday = rep(workday, length(hour)))
@@ -142,6 +144,8 @@ shinyServer(function(input, output) {
                                           group = weekday, color = weekday,
                                           text = paste("Hour: ", hour, "<br>",
                                                        "Frequency: ", freq, "<br>",
+                                                       "Int. Frequency: ", int_freq, "<br>",
+                                                       "Ext. Frequency: ", ext_freq, "<br>",
                                                        "Day: ", weekday, sep = ""))) +
         geom_line() +
         scale_x_continuous(breaks = c(8:23)) +
