@@ -11,6 +11,7 @@ library(lubridate)
 library(dplyr)
 library(ggplot2)
 library(ggpubr)
+library(lattice)
 ```
 
 ## Message Frequency by Location/Hours (Sender)
@@ -85,4 +86,32 @@ output_plot <- ggarrange(a, b, common.legend = TRUE, legend = "bottom")
       annotate_figure(output_plot, top = text_grob("Message Frequency (Sender)",
                                                    face = "bold",
                                                    size = 20))
+```
+
+```{r}
+data <- matrix(runif(100, 0, 5) , 10 , 10)
+colnames(data) <- letters[c(1:10)]
+rownames(data) <- paste( rep("row",10) , c(1:10) , sep=" ")
+ 
+# plot it flipping the axis
+levelplot( t(data[c(nrow(data):1) , ]),
+           col.regions=heat.colors(100))
+```
+
+```{r}
+res_heat <- fri_combined %>%
+  group_by(hour, location) %>%
+  summarise(msg_freq = sum(to_num), .groups = 'keep')
+
+ggplot(res_heat, aes(x = as.factor(hour), y = location)) +
+  geom_tile(aes(fill = msg_freq)) +
+  scale_fill_gradientn(colors = hcl.colors(20, "YlGn")) +
+  guides(fill = guide_colourbar(barwidth = 1.5,
+                                barheight = 7.5)) +
+  coord_equal() + 
+  theme(panel.background = element_blank(),
+        axis.line = element_line(colour = "black")) +
+  labs(x = "Hour",
+       y = "Location",
+       fill = "Msg. Freq.")
 ```
