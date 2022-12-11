@@ -38,14 +38,16 @@ shinyServer(function(input, output) {
         head(20)
       
       a <- ggplot(data = res,
-             mapping = aes(x = reorder(from, msg_freq), 
-                           y = msg_freq,
-                           fill = location)) +
+                  mapping = aes(x = reorder(from, msg_freq), 
+                                y = msg_freq,
+                                fill = location)) +
         geom_col() +
         labs(x = "Sender UID", 
              y = "Message Frequency",
-             fill = "Location",
-             title = "Message Frequency by Locations/Hours (Sender)") +
+             fill = "Location") +
+        theme(plot.title = element_text(hjust = 0.5),
+              panel.background = element_blank(),
+              axis.line = element_line(colour = "black")) + 
         scale_y_log10() +
         coord_flip() +
         geom_text(aes(label = msg_freq), size = 3, hjust = 1.2)
@@ -54,15 +56,21 @@ shinyServer(function(input, output) {
         group_by(location) %>%
         summarise(msg_freq = sum(msg_freq), .groups = 'keep')
       
-      b <- ggplot(data = res_pie, aes(x = "", y = location, fill = location)) +
-        geom_bar(stat="identity", width=1) +
-        coord_polar("y", start=0) +
-        labs(fill = "Location", title = "Location of Most Frequent Messages") + 
+      b <- ggplot(data = res_pie, 
+                  aes(x = "", 
+                      y = location, 
+                      fill = location)) +
+        geom_bar(aes(fill = location), stat = "identity", width = 1) +
+        coord_polar("y", start = 0) +
+        labs(fill = "Location") + 
         geom_text(aes(label = msg_freq), position = position_stack(vjust = 0.5)) +
         theme_void()
       
-      ggarrange(a, b,
-                common.legend = TRUE, legend = "bottom")
+      output_plot <- ggarrange(a, b, common.legend = TRUE, legend = "bottom")
+      
+      annotate_figure(output_plot, top = text_grob("Message Frequency (Sender)",
+                                                   face = "bold",
+                                                   size = 20))
 
     })
     

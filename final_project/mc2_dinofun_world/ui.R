@@ -24,16 +24,19 @@ shinyUI(fluidPage(
     sidebarLayout(
         sidebarPanel(
             sliderInput("time_slot",
-                        "Time slots:",
-                        min = 7,
+                        "Select hours:",
+                        min = 8,
                         max = 23,
                         value = 8,
-                        step = 1),
+                        step = 1,
+                        ticks = FALSE),
 
             checkboxGroupInput("location",
                                "Choose locations:",
                                c("Coaster Alley", "Entry Corridor", 
-                                 "Kiddie Land", "Tundra Land", "Wet Land"))
+                                 "Kiddie Land", "Tundra Land", "Wet Land"),
+                               selected = c("Coaster Alley", "Entry Corridor", 
+                                            "Kiddie Land", "Tundra Land", "Wet Land"))
         ),
 
         # Show a plot of the generated distribution
