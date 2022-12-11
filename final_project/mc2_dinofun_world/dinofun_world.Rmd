@@ -89,19 +89,10 @@ output_plot <- ggarrange(a, b, common.legend = TRUE, legend = "bottom")
 ```
 
 ```{r}
-data <- matrix(runif(100, 0, 5) , 10 , 10)
-colnames(data) <- letters[c(1:10)]
-rownames(data) <- paste( rep("row",10) , c(1:10) , sep=" ")
- 
-# plot it flipping the axis
-levelplot( t(data[c(nrow(data):1) , ]),
-           col.regions=heat.colors(100))
-```
-
-```{r}
 res_heat <- fri_combined %>%
   group_by(hour, location) %>%
-  summarise(msg_freq = sum(to_num), .groups = 'keep')
+  mutate(msg_freq = sum(to_num), .groups = 'keep') %>%
+  select(hour, location, msg_freq)
 
 ggplot(res_heat, aes(x = as.factor(hour), y = location)) +
   geom_tile(aes(fill = msg_freq)) +
@@ -114,4 +105,36 @@ ggplot(res_heat, aes(x = as.factor(hour), y = location)) +
   labs(x = "Hour",
        y = "Location",
        fill = "Msg. Freq.")
+```
+
+```{r}
+freq_calculator <- function(data, workday){
+  output <- data %>%
+    mutate(hour = hour(timestamp)) %>%
+    select(to_num, hour) %>%
+    group_by(hour) %>%
+    mutate(freq = sum(to_num)) %>%
+    select(-to_num) %>%
+    filter(!duplicated(hour)) %>%
+    mutate(weekday = rep(workday, length(hour)))
+  
+  return(output)
+}
+
+friday_freq <- freq_calculator(fri_combined, "Friday")
+saturday_freq <- freq_calculator(sat_combined, "Saturday")
+sunday_freq <- freq_calculator(sun_combined, "Sunday")
+
+combined_freq <- rbind(friday_freq, saturday_freq, sunday_freq)
+
+ggplot(combined_freq, aes(x = hour, y = freq, group = weekday, color = weekday)) +
+  geom_line() +
+  scale_x_continuous(breaks = c(8:23)) +
+  labs(x = "Hour",
+       y = "Message Frequency",
+       color = "Work Day", 
+       title = "Message Frequency by Hour") +
+  theme(plot.title = element_text(hjust = 0.5),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))
 ```

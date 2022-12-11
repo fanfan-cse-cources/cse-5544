@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(plotly)
 library(rsconnect)
 library(lubridate)
 library(dplyr)
@@ -29,12 +30,12 @@ sun_combined <- proc_data("../outputs/comm-data-Sun.csv")
 # Define server logic
 shinyServer(function(input, output) {
   
-  ## get the string version of the dataset input name
-  base <- reactive({get(input$data)})  
-  
     ## first plot tab
     output$p1 <- renderPlot({
       
+      ## get the string version of the dataset input name
+      base <- reactive({get(input$data)})
+
       ## save the data frame into a variable
       mydata <- base()
       
@@ -72,7 +73,7 @@ shinyServer(function(input, output) {
         geom_bar(aes(fill = location), stat = "identity", width = 1) +
         coord_polar("y", start = 0) +
         labs(fill = "Location",
-             title = "Message Frequency by Location") + 
+             title = "Overall Message Frequency by Location") + 
         geom_text(aes(label = msg_freq), position = position_stack(vjust = 0.5)) +
         theme(axis.title = element_blank(),
               axis.text = element_blank(),
@@ -80,14 +81,80 @@ shinyServer(function(input, output) {
               panel.background = element_blank(),
               plot.title = element_text(hjust = 0.5))
       
-      output_plot <- ggarrange(a, b, common.legend = TRUE, legend = "bottom")
-      
-      annotate_figure(output_plot, top = text_grob("Message Frequency (Sender)",
-                                                   face = "bold",
-                                                   size = 20))
-
+        ggarrange(a, b, common.legend = TRUE, legend = "bottom")
     })
     
+    ## second plot tab
+    output$p2 <- renderPlot({
+      
+      ## get the string version of the dataset input name
+      base <- reactive({get(input$dataset)})
+      
+      ## save the data frame into a variable
+      mydata <- base()
+      
+      res_heat <- mydata %>%
+        group_by(hour, location) %>%
+        mutate(msg_freq = sum(to_num), .groups = 'keep') %>%
+        select(hour, location, msg_freq)
+      
+      ggplot(res_heat, aes(x = as.factor(hour), y = location)) +
+        geom_tile(aes(fill = msg_freq)) +
+        scale_fill_gradientn(colors = hcl.colors(20, "YlGn")) +
+        guides(fill = guide_colourbar(barwidth = 1.5,
+                                      barheight = 7.5)) +
+        coord_equal() + 
+        theme(panel.background = element_blank(),
+              axis.line = element_line(colour = "black"),
+              plot.title = element_text(hjust = 0.5)) +
+        labs(x = "Hour",
+             y = "Location",
+             fill = "Msg. Freq.",
+             title = "Message Frequency by Location")
+    })
+    
+    ## third plot tab
+    output$p3 <- renderPlotly({
+      
+      freq_calculator <- function(data, workday){
+        output <- data %>%
+          mutate(hour = hour(timestamp)) %>%
+          select(to_num, hour) %>%
+          group_by(hour) %>%
+          mutate(freq = sum(to_num)) %>%
+          select(-to_num) %>%
+          filter(!duplicated(hour)) %>%
+          mutate(weekday = rep(workday, length(hour)))
+        
+        return(output)
+      }
+      
+      friday_freq <- freq_calculator(fri_combined, "Friday")
+      saturday_freq <- freq_calculator(sat_combined, "Saturday")
+      sunday_freq <- freq_calculator(sun_combined, "Sunday")
+      
+      combined_freq <- rbind(friday_freq, saturday_freq, sunday_freq)
+      
+      combined_freq <- combined_freq %>%
+        filter(weekday %in% input$weekday)
+      
+      plot_3 <- ggplot(combined_freq, aes(x = hour, y = freq, 
+                                          group = weekday, color = weekday,
+                                          text = paste("Hour: ", hour, "<br>",
+                                                       "Frequency: ", freq, "<br>",
+                                                       "Day: ", weekday, sep = ""))) +
+        geom_line() +
+        scale_x_continuous(breaks = c(8:23)) +
+        labs(x = "Hour",
+             y = "Message Frequency",
+             color = "Work Day", 
+             title = "Message Frequency by Hour") +
+        theme(plot.title = element_text(hjust = 0.5),
+              panel.background = element_blank(),
+              axis.line = element_line(colour = "black"))
+      
+      ggplotly(plot_3, tooltip = c("text"))
+    })
 
 
 })
